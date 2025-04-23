@@ -27,7 +27,7 @@ namespace HomeRentApp.Controllers
                 _context.SaveChanges();
                 return RedirectToAction("Index", "Home");  // Guarda el usuario si los datos son válidos y mientras tanto redirige al inicio mientras se hace el otro flujo
             }
-            return View(usuario);
+            return View(usuario); 
         }
 
     }
