@@ -1,4 +1,4 @@
-html {
+﻿html {
   font-size: 14px;
 }
 
@@ -17,10 +17,131 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+h2{
+    justify-content: center;
+    text-align:center;
+}
+.indexBackground {
+    background-color: #FF7F50;
+    min-height: 100vh;
+    width: 100vw;
+    position: absolute; /* <-- nuevo */
+    top: 0;
+    left: 0;
+    z-index: -1; /* se pone detrás del contenido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.form-group{
-    background-color: blue;
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    
 }
+
+.headerContainer{
+    background-color: coral;
+}
+
+.footerContainer {
+    background-color: coral;
+}
+
+
+.form-group {
+    background-color:white;
+}
+
+.formContainer {
+    width: auto;
+    height: auto;
+    padding: 40px 40px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px red;
+    text-align: left;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    line-height: 5;
+}
+
+
+.loginForm {
+    width: 350px;
+    padding: 30px;
+    margin: 100px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px red;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.loginForm input[type="text"],
+.loginForm input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.loginForm input[type="submit"]:hover {
+    background-color: #45a049;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+#icon {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+
+
+#formFooter a {
+    display: block;
+    margin-top: 10px;
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.card {
+    background-color: white;
+    border: none;
+    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.4); /* Sombra roja inicial más ligera */
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    width: 300px; 
+    height: 420px;
+}
+
+
+
+/* Efecto al pasar el mouse se levante un poco*/
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 0, 0, 0.25);
+}
+
+.btnDepartamento {
+    color: #ff6600; /* Color del texto (ejemplo: naranja) */
+    border: solid;
+    border border-color: #ff6600; /* Color del borde (mismo naranja) */
+    padding: 8px 16px; /* Espaciado interno bonito */
+    border-radius: 8px; /* Bordes redondeados */
+    font-weight: 500; /* Un poquito más grueso si quieres */
+    text-align: center; /* Centra el texto dentro */
+}
+

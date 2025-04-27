@@ -8,14 +8,14 @@
 
 <!-- Botón para agregar nuevo departamento -->
 <div class="text-center mb-4">
-    <a class="btn btn-success" href="@Url.Action("Agregar", "Departamento")">Agregar Departamento</a>
+    <a class="btnDepartamento" href="@Url.Action("Agregar", "Departamento")">Agregar Departamento</a>
 </div>
 
 <div class="row">
     @foreach (var departamento in Model)
     {
         <div class="col-md-4 mb-4">
-            <div class="card shadow-sm">
+            <div class="card">
                 <img src="@(departamento.Imagen != null ? $"data:image/jpeg;base64,{departamento.Imagen}" : "https://via.placeholder.com/400x250")"
                      class="card-img-top" alt="Imagen Departamento">
 
@@ -25,7 +25,7 @@
                     <p class="card-text"><strong>Precio:</strong> @departamento.Precio.ToString("C")</p>
                     <p class="card-text"><strong>Cuartos Disponibles:</strong> @departamento.CuartosDisponibles</p>
 
-                    <a href="#" class="btn btn-outline-primary btn-block">Ver Departamento</a>
+                    <a href="#" class="btnDepartamento">Ver Departamento</a>
                 </div>
             </div>
         </div>
