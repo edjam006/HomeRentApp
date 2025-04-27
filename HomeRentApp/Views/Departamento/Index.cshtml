@@ -16,7 +16,9 @@
     {
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm">
-                <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Imagen Departamento">
+                <img src="@(departamento.Imagen != null ? $"data:image/jpeg;base64,{departamento.Imagen}" : "https://via.placeholder.com/400x250")"
+                     class="card-img-top" alt="Imagen Departamento">
+
                 <div class="card-body">
                     <h5 class="card-title">@departamento.Nombre</h5>
                     <p class="card-text">@departamento.Direccion</p>

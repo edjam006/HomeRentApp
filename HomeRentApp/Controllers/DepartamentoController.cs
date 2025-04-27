@@ -29,27 +29,42 @@ namespace HomeRentApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Agregar(Departamento departamento)
+        public IActionResult Agregar(Departamento departamento, IFormFile ImagenArchivo)
         {
+            //Para este metodo recibi ayuda de ia para poder integrar la funcionalidad de agregar imagen y convertirla a base 64
             if (ModelState.IsValid)
             {
                 var usuarioId = HttpContext.Session.GetString("UsuarioId");
 
                 if (string.IsNullOrEmpty(usuarioId))
                 {
-                    return RedirectToAction("Login", "Usuario"); // redirige si no está logueado
+                    return RedirectToAction("Login", "Usuario");
                 }
 
-                departamento.UsuarioId = usuarioId; // asigna el usuario correcto
+                departamento.UsuarioId = usuarioId;
+
+                if (ImagenArchivo != null && ImagenArchivo.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        ImagenArchivo.CopyTo(memoryStream);
+                        byte[] imagenBytes = memoryStream.ToArray();
+                        departamento.Imagen = Convert.ToBase64String(imagenBytes);
+                    }
+                }
 
                 _context.Departamento.Add(departamento);
-                _context.SaveChanges(); // guarda el departamento en la base
+                _context.SaveChanges();
 
-                return RedirectToAction("Index", "Departamento"); // redirige a lista
+                return RedirectToAction("Index", "Departamento");
             }
 
-            return View(departamento); // si hay errores, vuelve a la vista
+            return View(departamento);
         }
+
+
+
+
 
 
 

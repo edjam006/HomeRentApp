@@ -8,6 +8,9 @@ namespace HomeRentApp.Models
         [Key]
         public int DepartamentoId { get; set; }
 
+       
+        public string? Imagen { get; set; } //Se quita el required para que se pueda subir como formato archivo normal
+
         [Required]
         [MaxLength(100)]
         public string Nombre { get; set; }

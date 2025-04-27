@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HomeRentApp.Migrations
 {
     [DbContext(typeof(HomeRentContextSQLServer))]
-    [Migration("20250427002008_RemoveTipoUsuario")]
-    partial class RemoveTipoUsuario
+    [Migration("20250427121905_AgregarImagen")]
+    partial class AgregarImagen
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,6 +39,10 @@ namespace HomeRentApp.Migrations
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Imagen")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()

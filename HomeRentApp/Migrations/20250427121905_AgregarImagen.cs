@@ -5,7 +5,7 @@
 namespace HomeRentApp.Migrations
 {
     /// <inheritdoc />
-    public partial class RemoveTipoUsuario : Migration
+    public partial class AgregarImagen : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,6 +16,7 @@ namespace HomeRentApp.Migrations
                 {
                     DepartamentoId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Imagen = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Nombre = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Direccion = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Precio = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
