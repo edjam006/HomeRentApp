@@ -33,12 +33,28 @@ namespace HomeRentApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                var usuarioId = HttpContext.Session.GetString("UsuarioId");
+
+                if (string.IsNullOrEmpty(usuarioId))
+                {
+                    return RedirectToAction("Login", "Usuario"); // redirige si no está logueado
+                }
+
+                departamento.UsuarioId = usuarioId; // asigna el usuario correcto
+
                 _context.Departamento.Add(departamento);
-                _context.SaveChanges();
-                return RedirectToAction("Index", "Departamento");
+                _context.SaveChanges(); // guarda el departamento en la base
+
+                return RedirectToAction("Index", "Departamento"); // redirige a lista
             }
-            return View(departamento);
+
+            return View(departamento); // si hay errores, vuelve a la vista
         }
+
+
+
+
+
 
     }
 }
