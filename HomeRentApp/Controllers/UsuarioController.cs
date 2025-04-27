@@ -1,6 +1,8 @@
 ﻿using HomeRentApp.Data;
 using HomeRentApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using System.Linq;
 
 namespace HomeRentApp.Controllers
 {
@@ -12,6 +14,8 @@ namespace HomeRentApp.Controllers
         {
             _context = context;
         }
+
+
         public IActionResult Registro()
         {
             return View();
@@ -25,10 +29,44 @@ namespace HomeRentApp.Controllers
             {
                 _context.Usuario.Add(usuario);
                 _context.SaveChanges();
-                return RedirectToAction("Index", "Home");  // Guarda el usuario si los datos son válidos y mientras tanto redirige al inicio mientras se hace el otro flujo
+                return RedirectToAction("Index", "Home");
             }
-            return View(usuario); 
+            return View(usuario);
         }
 
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Login(string usuarioId, string contraseña)
+        {
+            var usuario = _context.Usuario
+                .FirstOrDefault(u => u.UsuarioId == usuarioId && u.Contraseña == contraseña);
+
+            if (usuario != null)
+            {
+                HttpContext.Session.SetString("UsuarioId", usuario.UsuarioId);
+
+                return RedirectToAction("Index", "Departamento");
+            }
+            else
+            {
+                ViewBag.Error = "Usuario o contraseña incorrectos.";
+                return View();
+            }
+        }
+
+
+
+        // Cerrar sesión
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Usuario");
+        }
     }
 }

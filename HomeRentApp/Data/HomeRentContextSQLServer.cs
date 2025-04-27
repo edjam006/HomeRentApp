@@ -11,6 +11,8 @@ namespace HomeRentApp.Data
         {
         }
 
-        public DbSet<Usuario> Usuario { get; set; } = default!;
+        public DbSet<Usuario> Usuario { get; set; } = default!; //Agregar las tablas de los datos 
+        public DbSet<Departamento> Departamento { get; set; } = default!;
+
     }
 }

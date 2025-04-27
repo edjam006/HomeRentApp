@@ -1,8 +1,26 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="loginForm">
+    <div id="formContent">
+        <div class="fadeIn first">
+            <!-- Hay que agregar logo de login --> 
+        </div>
+
+        <!-- Login Form -->
+        <form asp-action="Login" asp-controller="Usuario" method="post">
+            <input type="text" id="usuarioId" class="fadeIn second" name="usuarioId" placeholder="Usuario ID" required />
+            <input type="password" id="contraseña" class="fadeIn third" name="contraseña" placeholder="Contraseña" required />
+            <input type="submit" class="fadeIn fourth" value="Log In" />
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" href="@Url.Action("Registro", "Usuario")">Registrarse</a>
+        </div>
+
+
+    </div>
 </div>
